@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="accountBasicCLI"
+		class="kz.dulatibrayev.solidbankapp.cli.basic.AccountBasicCLI">
+		<constructor-arg index="0" ref="myCLI" />
+		<constructor-arg index="1" ref="bankCore" />
+		<constructor-arg index="2" ref="accountListingServiceImpl" />
+	</bean>
+
+
+
+
+	<bean id="bankCore" class="kz.dulatibrayev.solidbankapp.app.BankCore">
+		<constructor-arg ref="accountCreationServiceImpl" />
+	</bean>
+
+
+
+	<bean id="accountCreationService"
+		class="kz.dulatibrayev.solidbankapp.services.interfaces.AccountCreationService"
+		abstract="true"></bean>
+
+
+	<bean id="accountCreationServiceImpl"
+		class="kz.dulatibrayev.solidbankapp.services.AccountCreationServiceImpl">
+		<constructor-arg ref="memoryAccountDAO" />
+	</bean>
+
+	<bean id="memoryAccountDAO"
+		class="kz.dulatibrayev.solidbankapp.dao.MemoryAccountDAO"></bean>
+
+
+
+
+
+
+
+
+
+	<bean id="accountListingService"
+		class="kz.dulatibrayev.solidbankapp.services.interfaces.AccountListingService"
+		abstract="true"></bean>
+
+
+	<bean id="accountListingServiceImpl"
+		class="kz.dulatibrayev.solidbankapp.services.AccountListingServiceImpl">
+	</bean>
+
+
+
+	<bean id="accountDao"
+		class="kz.dulatibrayev.solidbankapp.dao.AccountDAO"
+		abstract="true"></bean>
+
+	<bean id="createAccountOperationUi"
+		class="kz.dulatibrayev.solidbankapp.cli.interfaces.CreateAccountOperationUI"
+		abstract="true"></bean>
+
+	<bean id="cliUI"
+		class="kz.dulatibrayev.solidbankapp.cli.interfaces.CLIUI"
+		abstract="true"></bean>
+
+	<bean id="myCLI"
+		class="kz.dulatibrayev.solidbankapp.cli.basic.MyCLI"></bean>
+
+
+	<context:component-scan
+		base-package="kz.dulatibrayev" />
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
