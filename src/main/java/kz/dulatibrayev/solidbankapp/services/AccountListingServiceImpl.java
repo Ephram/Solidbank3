@@ -3,6 +3,7 @@ package kz.dulatibrayev.solidbankapp.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import kz.dulatibrayev.solidbankapp.account.Account;
 import kz.dulatibrayev.solidbankapp.account.AccountWithdraw;
@@ -11,7 +12,7 @@ import kz.dulatibrayev.solidbankapp.enums.AccountType;
 import kz.dulatibrayev.solidbankapp.services.interfaces.AccountListingService;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+@Component
 public class AccountListingServiceImpl implements AccountListingService {
 	@Autowired
 	private AccountDAO accountDAO;
@@ -19,7 +20,6 @@ public class AccountListingServiceImpl implements AccountListingService {
 	@Override
 	public Account getClientAccount(String clientID, String accountID) {
 		return accountDAO.getClientAccount(clientID, accountID);
-		
 
 	}
 
@@ -37,7 +37,7 @@ public class AccountListingServiceImpl implements AccountListingService {
 
 	@Override
 	public List<Account> getClientAccountsByType(String clientID, AccountType accountType) {
-		
+
 		return null;
 	}
 

@@ -3,22 +3,21 @@ package kz.dulatibrayev.solidbankapp.cli.basic;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import kz.dulatibrayev.solidbankapp.cli.interfaces.CLIUI;
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
 
+@Component
 public class MyCLI implements CLIUI {
-	@Autowired
+
 	private Scanner scanner;
 
-	public MyCLI(Scanner scanner) {
-		this.scanner = scanner;
+	public MyCLI() {
+		this.scanner = new Scanner(System.in);
 
 	}
-//
-//	public MyCLI() {
-//		this.scanner = new Scanner(System.in);
-//	}
 
 	public double requestClientAmount() {
 		System.out.println("Type amount of money ");
@@ -50,7 +49,7 @@ public class MyCLI implements CLIUI {
 	}
 
 	public Scanner getScanner() {
-		return scanner;
+		return this.scanner;
 	}
 
 	public void setScanner(Scanner scanner) {

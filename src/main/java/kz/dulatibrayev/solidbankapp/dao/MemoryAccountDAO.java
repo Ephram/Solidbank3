@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import kz.dulatibrayev.solidbankapp.account.Account;
 import kz.dulatibrayev.solidbankapp.account.AccountWithdraw;
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+@Component
 public class MemoryAccountDAO implements AccountDAO {
 
 	private List<Account> accountList = new ArrayList<Account>();

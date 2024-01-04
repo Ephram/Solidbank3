@@ -1,19 +1,18 @@
 package kz.dulatibrayev.solidbankapp.transaction;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import kz.dulatibrayev.solidbankapp.account.AccountWithdraw;
 import kz.dulatibrayev.solidbankapp.cli.interfaces.WithdrawDepositOperationCLIUI;
 import kz.dulatibrayev.solidbankapp.services.interfaces.AccountListingService;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+@Component
 public class TransactionWithdrawCLI {
-	@Autowired
+
 	private TransactionWithdraw transactionWithdraw;
-	@Autowired
+
 	private WithdrawDepositOperationCLIUI withdrawDepositOperationCLIUI;
-	@Autowired
+
 	private AccountListingService accountListingService;
 
 	public void withdrawMoney(String clientID) {

@@ -7,7 +7,7 @@ import kz.dulatibrayev.solidbankapp.services.interfaces.Transaction;
 import kz.dulatibrayev.solidbankapp.services.interfaces.TransactionDAO;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 public class MemoryTransactionDAO implements TransactionDAO {
 
 	private List<Transaction> transactions = new ArrayList<Transaction>();

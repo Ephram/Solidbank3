@@ -8,7 +8,7 @@ import kz.dulatibrayev.solidbankapp.services.interfaces.Transaction;
 import kz.dulatibrayev.solidbankapp.services.interfaces.TransactionDAO;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 public class TransactionWithdraw {
 	@Autowired
 	private AccountWithdrawService accountWithdrawService;

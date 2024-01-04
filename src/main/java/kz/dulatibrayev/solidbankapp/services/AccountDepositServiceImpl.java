@@ -7,7 +7,7 @@ import kz.dulatibrayev.solidbankapp.dao.AccountDAO;
 import kz.dulatibrayev.solidbankapp.services.interfaces.AccountDepositService;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 public class AccountDepositServiceImpl implements AccountDepositService {
 	@Autowired
 	private AccountDAO accountDAO;

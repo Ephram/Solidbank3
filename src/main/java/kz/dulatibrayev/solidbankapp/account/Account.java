@@ -1,12 +1,22 @@
 package kz.dulatibrayev.solidbankapp.account;
 
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
 
+@Table
 public class Account {
+
+	@Column
 	private AccountType accountType;
+	@Column
 	private String id;
+	@Column
 	private String clientID;
+	@Column
 	private double balance;
+	@Column
 	private boolean withdrawAllowed;
 
 	public double getBalance() {
