@@ -1,22 +1,24 @@
 package kz.dulatibrayev.solidbankapp.account;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
 
-@Table
+@Table(schema = "V1__initial_schema.sql")
 public class Account {
 
-	@Column
+	@Id
+	private long id;
+
+	@Column("ACCOUNTTYPE")
 	private AccountType accountType;
-	@Column
-	private String id;
-	@Column
+	@Column("CLIENTID")
 	private String clientID;
-	@Column
+	@Column("BALANCE")
 	private double balance;
-	@Column
+	@Column("WITHDRAWALLOWED")
 	private boolean withdrawAllowed;
 
 	public double getBalance() {
@@ -37,7 +39,11 @@ public class Account {
 		this.clientID = clientID;
 	}
 
-	public Account(AccountType accountType, String id, String clientID, double balance, boolean withdrawAllowed) {
+	public Account() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Account(long id, AccountType accountType, String clientID, double balance, boolean withdrawAllowed) {
 		this.accountType = accountType;
 		this.id = id;
 		this.clientID = clientID;
@@ -61,11 +67,11 @@ public class Account {
 		this.accountType = accountType;
 	}
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

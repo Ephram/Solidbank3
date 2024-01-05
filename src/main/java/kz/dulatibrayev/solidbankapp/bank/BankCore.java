@@ -10,7 +10,7 @@ import kz.dulatibrayev.solidbankapp.services.interfaces.AccountCreationService;
 public class BankCore {
 	private static long id = 1;
 	private long lastAccountNumber = 1;
-	
+
 	@Autowired
 	private AccountCreationService accountCreation;
 

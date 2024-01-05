@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import kz.dulatibrayev.solidbankapp.account.Account;
 
 @Repository
-public interface AccountRepository extends CrudRepository<Account, Integer> {
+public interface AccountRepository extends CrudRepository<Account, Long> {
 
 }

@@ -3,13 +3,11 @@ package kz.dulatibrayev.solidbankapp.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kz.dulatibrayev.solidbankapp.account.Account;
 import kz.dulatibrayev.solidbankapp.account.AccountWithdraw;
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
-import lombok.AllArgsConstructor;
 
 @Component
 public class MemoryAccountDAO implements AccountDAO {
@@ -40,7 +38,7 @@ public class MemoryAccountDAO implements AccountDAO {
 	@Override
 	public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
 		for (Account account : accountList) {
-			if (account.getId().equalsIgnoreCase(accountID)) {
+			if (account.getId() == Long.valueOf(accountID)) {
 				if (account.isWithdrawAllowed()) {
 					return (AccountWithdraw) account;
 				}
@@ -52,7 +50,7 @@ public class MemoryAccountDAO implements AccountDAO {
 	@Override
 	public Account getClientAccount(String clientID, String accountID) {
 		for (Account account : accountList) {
-			if (account.getId().equalsIgnoreCase(accountID)) {
+			if (account.getId() == Long.valueOf(accountID)) {
 				return account;
 			}
 		}
