@@ -1,34 +1,54 @@
 package kz.dulatibrayev.solidbankapp.account;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Table(schema = "V1__initial_schema.sql")
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Account {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column("ACCOUNTTYPE")
 	private AccountType accountType;
-	@Column("CLIENTID")
-	private String clientID;
-	@Column("BALANCE")
-	private double balance;
-	@Column("WITHDRAWALLOWED")
-	private boolean withdrawAllowed;
 
-	public double getBalance() {
-		return balance;
-	}
+	private String clientID;
+
+	private double balance;
+
+	private boolean withdrawAllowed;
 
 	@Override
 	public String toString() {
 		return "Account [accountType=" + accountType + ", id=" + id + ", clientID=" + clientID + ", balance=" + balance
 				+ ", withdrawAllowed=" + withdrawAllowed + "]";
+	}
+
+//	public Account() {
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	public Account(long id, AccountType accountType, String clientID, double balance, boolean withdrawAllowed) {
+//		this.accountType = accountType;
+//		this.id = id;
+//		this.clientID = clientID;
+//		this.balance = balance;
+//		this.withdrawAllowed = withdrawAllowed;
+//	}
+
+	public double getBalance() {
+		return balance;
 	}
 
 	public String getClientID() {
@@ -37,18 +57,6 @@ public class Account {
 
 	public void setClientID(String clientID) {
 		this.clientID = clientID;
-	}
-
-	public Account() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Account(long id, AccountType accountType, String clientID, double balance, boolean withdrawAllowed) {
-		this.accountType = accountType;
-		this.id = id;
-		this.clientID = clientID;
-		this.balance = balance;
-		this.withdrawAllowed = withdrawAllowed;
 	}
 
 	public boolean isWithdrawAllowed() {

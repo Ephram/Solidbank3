@@ -25,7 +25,12 @@ public class AccountCreationServiceImpl implements AccountCreationService {
 		account.setAccountType(accountType);
 		account.setClientID(clientID);
 		account.setBalance(0.0);
-		account.setWithdrawAllowed(true);
+		if (accountType == AccountType.FIXED) {
+
+			account.setWithdrawAllowed(false);
+		} else {
+			account.setWithdrawAllowed(true);
+		}
 
 		repository.save(account);
 
