@@ -4,13 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import kz.dulatibrayev.solidbankapp.account.AccountDeposit;
 import kz.dulatibrayev.solidbankapp.dao.AccountDAO;
+import kz.dulatibrayev.solidbankapp.repository.AccountRepository;
 import kz.dulatibrayev.solidbankapp.services.interfaces.AccountDepositService;
-import lombok.AllArgsConstructor;
-
 
 public class AccountDepositServiceImpl implements AccountDepositService {
 	@Autowired
 	private AccountDAO accountDAO;
+
+	@Autowired
+	private AccountRepository repository;
 
 	@Override
 	public void deposit(double amount, AccountDeposit account) {
@@ -18,7 +20,7 @@ public class AccountDepositServiceImpl implements AccountDepositService {
 		double tempBalance = account.getBalance() + amount;
 		account.setBalance(tempBalance);
 		System.out.println("Balance deposit success " + amount);
-		accountDAO.updateAccount(account);
+		repository.save(account);
 
 	}
 

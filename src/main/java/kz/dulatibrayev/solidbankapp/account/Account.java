@@ -9,12 +9,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 public class Account {
 
 	@Id
@@ -35,17 +37,17 @@ public class Account {
 				+ ", withdrawAllowed=" + withdrawAllowed + "]";
 	}
 
-//	public Account() {
-//		// TODO Auto-generated constructor stub
-//	}
-//
-//	public Account(long id, AccountType accountType, String clientID, double balance, boolean withdrawAllowed) {
-//		this.accountType = accountType;
-//		this.id = id;
-//		this.clientID = clientID;
-//		this.balance = balance;
-//		this.withdrawAllowed = withdrawAllowed;
-//	}
+	public Account() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Account(long id, AccountType accountType, String clientID, double balance, boolean withdrawAllowed) {
+		this.accountType = accountType;
+		this.id = id;
+		this.clientID = clientID;
+		this.balance = balance;
+		this.withdrawAllowed = withdrawAllowed;
+	}
 
 	public double getBalance() {
 		return balance;
