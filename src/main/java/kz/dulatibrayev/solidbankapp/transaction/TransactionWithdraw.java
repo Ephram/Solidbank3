@@ -1,23 +1,19 @@
 package kz.dulatibrayev.solidbankapp.transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import kz.dulatibrayev.solidbankapp.account.AccountWithdraw;
+import kz.dulatibrayev.solidbankapp.account.Account;
 import kz.dulatibrayev.solidbankapp.services.interfaces.AccountWithdrawService;
-import kz.dulatibrayev.solidbankapp.services.interfaces.Transaction;
-import kz.dulatibrayev.solidbankapp.services.interfaces.TransactionDAO;
-import lombok.AllArgsConstructor;
 
-
+@Component
 public class TransactionWithdraw {
 	@Autowired
 	private AccountWithdrawService accountWithdrawService;
-	@Autowired
-	private TransactionDAO transactionDAO;
 
-	public void execute(AccountWithdraw accountWithdraw, double amount) {
-		accountWithdrawService.withdraw(amount, accountWithdraw);
-		transactionDAO.addTransaction(new Transaction());
+	public void execute(Account account, double amount) {
+		accountWithdrawService.withdraw(amount, account);
+		//transactionDAO.addTransaction(new Transaction());
 	}
 
 }

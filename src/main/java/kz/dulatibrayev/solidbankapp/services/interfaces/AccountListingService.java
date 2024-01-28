@@ -9,9 +9,9 @@ import kz.dulatibrayev.solidbankapp.enums.AccountType;
 public interface AccountListingService {
 	
 	
-	Account getClientAccount(String clientID, String accountID);
+	Account getClientAccount(Long clientID, String accountID);
 	
-	AccountWithdraw getClientWithdrawAccount(String clientID, String accountID);
+	Account getClientWithdrawAccount(Long id, String accountID);
 	
 	
 	List<Account> getClientAccounts(String clientID);

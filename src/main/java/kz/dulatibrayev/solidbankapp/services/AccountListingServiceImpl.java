@@ -1,14 +1,11 @@
 package kz.dulatibrayev.solidbankapp.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kz.dulatibrayev.solidbankapp.account.Account;
-import kz.dulatibrayev.solidbankapp.account.AccountDeposit;
-import kz.dulatibrayev.solidbankapp.account.AccountWithdraw;
 import kz.dulatibrayev.solidbankapp.dao.AccountDAO;
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
 import kz.dulatibrayev.solidbankapp.repository.AccountRepository;
@@ -23,26 +20,21 @@ public class AccountListingServiceImpl implements AccountListingService {
 	private AccountRepository repository;
 
 	@Override
-	public Account getClientAccount(String clientID, String accountID) {
+	public Account getClientAccount(Long id, String accountID) {
 
-		Optional<Account> opt = repository.findById(Long.valueOf(clientID));
-		return opt.get();
-	}
-
-	public AccountDeposit getClientDepositAccount(String clientID) {
-		Optional<AccountDeposit> opt = repository.findById(Long.valueOf(clientID));
-		return opt.get();
+		return repository.findById(Long.valueOf(accountID)).get();
 	}
 
 	@Override
-	public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
-		return accountDAO.getClientWithdrawAccount(clientID, accountID);
+	public Account getClientWithdrawAccount(Long id, String accountID) {
 
+		return repository.findById(Long.valueOf(accountID)).get();
 	}
 
 	@Override
 	public List<Account> getClientAccounts(String clientID) {
-		return this.accountDAO.getClientAccounts(clientID);
+
+		return repository.findAllByClientID(clientID);
 
 	}
 

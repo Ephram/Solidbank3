@@ -1,24 +1,26 @@
 package kz.dulatibrayev.solidbankapp.transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import kz.dulatibrayev.solidbankapp.account.AccountDeposit;
+import kz.dulatibrayev.solidbankapp.account.Account;
+import kz.dulatibrayev.solidbankapp.enums.OperationType;
 import kz.dulatibrayev.solidbankapp.services.interfaces.AccountDepositService;
 import kz.dulatibrayev.solidbankapp.services.interfaces.Transaction;
-import kz.dulatibrayev.solidbankapp.services.interfaces.TransactionDAO;
-import lombok.AllArgsConstructor;
+import kz.dulatibrayev.solidbankapp.services.interfaces.TransactionRepository;
 
-
+@Component
 public class TransactionDeposit {
 	@Autowired
 	private AccountDepositService accountDepositService;
-	@Autowired
-	private TransactionDAO transactionDAO;
 
-	public void execute(AccountDeposit accountDeposit, double amount) {
+	private TransactionRepository transactionRepository;
 
-		accountDepositService.deposit(amount, accountDeposit);
+	public void execute(Account account, double amount) {
 
-		transactionDAO.addTransaction(new Transaction());
+		if (accountDepositService.deposit(amount, account)) {
+			transactionRepository.save(new Transaction(account, amount, OperationType.DEPOSIT));
+		}
+
 	}
 }

@@ -51,11 +51,11 @@ public class SolidbankappApplication implements CommandLineRunner {
 				break;
 
 			case "3":
-				transactionDepositCLI.depositMoney(clientID);
+				transactionDepositCLI.depositMoney(Long.valueOf(clientID));
 				break;
 
 			case "4":
-				transactionWithdrawCLI.withdrawMoney(clientID);
+				transactionWithdrawCLI.withdrawMoney(Long.valueOf(clientID));
 				break;
 
 			case "6":

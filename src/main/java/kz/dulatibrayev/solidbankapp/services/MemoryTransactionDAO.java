@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kz.dulatibrayev.solidbankapp.services.interfaces.Transaction;
-import kz.dulatibrayev.solidbankapp.services.interfaces.TransactionDAO;
+import kz.dulatibrayev.solidbankapp.services.interfaces.TransactionRepository;
 import lombok.AllArgsConstructor;
 
 
-public class MemoryTransactionDAO implements TransactionDAO {
+public class MemoryTransactionDAO implements TransactionRepository {
 
 	private List<Transaction> transactions = new ArrayList<Transaction>();
 
