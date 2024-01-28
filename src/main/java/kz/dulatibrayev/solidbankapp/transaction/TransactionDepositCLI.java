@@ -3,7 +3,6 @@ package kz.dulatibrayev.solidbankapp.transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import kz.dulatibrayev.solidbankapp.account.Account;
 import kz.dulatibrayev.solidbankapp.account.AccountDeposit;
 import kz.dulatibrayev.solidbankapp.cli.interfaces.WithdrawDepositOperationCLIUI;
 import kz.dulatibrayev.solidbankapp.services.interfaces.AccountListingService;
@@ -20,20 +19,18 @@ public class TransactionDepositCLI {
 	public void depositMoney(String clientID) {
 		String accountID = withdrawDepositOperationCLIUI.requestClientAccountNumber();
 
-		AccountDeposit accountDeposit;
+		try {
 
-		Account account = accountListingService.getClientAccount(clientID, accountID);
-		if (account instanceof AccountDeposit) {
-			accountDeposit = (AccountDeposit) account;
-			// Proceed with deposit operations
-		} else {
-			// Handle the case where the account is not an AccountDeposit
-			throw new IllegalStateException("Cannot deposit to a non-deposit account");
+			AccountDeposit accountDeposit = (AccountDeposit) accountListingService.getClientAccount(clientID,
+					accountID);
+
+			double depositMoney = withdrawDepositOperationCLIUI.requestClientAmount();
+
+			transactionDeposit.execute(accountDeposit, depositMoney);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		double depositMoney = withdrawDepositOperationCLIUI.requestClientAmount();
-
-		transactionDeposit.execute(accountDeposit, depositMoney);
 
 	}
 

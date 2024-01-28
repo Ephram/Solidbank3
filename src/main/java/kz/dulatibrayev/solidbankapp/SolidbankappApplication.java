@@ -23,6 +23,8 @@ public class SolidbankappApplication implements CommandLineRunner {
 	TransactionWithdrawCLI transactionWithdrawCLI;
 
 	public static void main(String[] args) {
+	    
+
 		SpringApplication.run(SolidbankappApplication.class);
 
 	}

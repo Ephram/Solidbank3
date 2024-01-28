@@ -1,10 +1,10 @@
 package kz.dulatibrayev.solidbankapp.account;
 
+import jakarta.persistence.Entity;
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 
+@Entity
 public class AccountDeposit extends Account {
 
 	public AccountDeposit(long id, AccountType accountType, String clientID, double balance, boolean withdrawAllowed) {

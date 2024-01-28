@@ -4,16 +4,17 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import kz.dulatibrayev.solidbankapp.account.Account;
+import kz.dulatibrayev.solidbankapp.account.AccountDeposit;
 import kz.dulatibrayev.solidbankapp.account.AccountWithdraw;
 import kz.dulatibrayev.solidbankapp.dao.AccountDAO;
 import kz.dulatibrayev.solidbankapp.enums.AccountType;
 import kz.dulatibrayev.solidbankapp.repository.AccountRepository;
 import kz.dulatibrayev.solidbankapp.services.interfaces.AccountListingService;
 
-@Component
+@Service
 public class AccountListingServiceImpl implements AccountListingService {
 	@Autowired
 	private AccountDAO accountDAO;
@@ -25,10 +26,12 @@ public class AccountListingServiceImpl implements AccountListingService {
 	public Account getClientAccount(String clientID, String accountID) {
 
 		Optional<Account> opt = repository.findById(Long.valueOf(clientID));
-
-		
 		return opt.get();
+	}
 
+	public AccountDeposit getClientDepositAccount(String clientID) {
+		Optional<AccountDeposit> opt = repository.findById(Long.valueOf(clientID));
+		return opt.get();
 	}
 
 	@Override
