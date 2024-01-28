@@ -7,7 +7,7 @@ import kz.dulatibrayev.solidbankapp.account.Account;
 @Component
 public interface AccountWithdrawService {
 	//в проекте он прописан что метод deposit возможно надо это проверить
-	void withdraw (double amount, Account account);
+	boolean withdraw (double amount, Account account);
 	
 
 }

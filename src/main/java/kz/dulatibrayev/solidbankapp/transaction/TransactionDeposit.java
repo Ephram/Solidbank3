@@ -13,7 +13,7 @@ import kz.dulatibrayev.solidbankapp.services.interfaces.TransactionRepository;
 public class TransactionDeposit {
 	@Autowired
 	private AccountDepositService accountDepositService;
-
+	@Autowired
 	private TransactionRepository transactionRepository;
 
 	public void execute(Account account, double amount) {

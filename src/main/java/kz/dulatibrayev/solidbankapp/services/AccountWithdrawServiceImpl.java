@@ -14,14 +14,16 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService {
 	
 	
 	@Override
-	public void withdraw(double amount, Account account) {
+	public boolean withdraw(double amount, Account account) {
 		if (account.getBalance() > 0 & account.getBalance() >= amount) {
 			double tempBalance = account.getBalance() - amount;
 			account.setBalance(tempBalance);
 			System.out.println("Balance withdraw success " + amount);
-			repository.save(account);	
+			repository.save(account);
+			return true;
 		} else {
 			System.out.println("not enough balance");
+			return false;
 		}
 
 	}
